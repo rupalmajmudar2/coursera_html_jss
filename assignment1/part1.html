@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="author" content="Rupal Majmudar">
+<title>Dating Website</title>
+</head>
+<body>
+<h1>Please Enter Your Details For Our Dating Website!</h1>
+<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post"> 
+<!-- <form action="http://localhost/show_everything.php" method="post"> -->
+	<fieldset>
+		<legend>Your Face</legend>
+			<label for="avatar">Your Image </label>
+				<input type="file" id="avatar" name="avatar" required /><br>
+				<label for="preview">Image Preview: </label> <img id="preview"><br>
+	</fieldset> <br>
+	<fieldset> <br>
+		<legend>Your General Details</legend>
+			<label for="fullname">Name:</label> 
+				<input type="text" id="fullname" name="fullname" value="" placeholder="Your full name" required><br>
+			<label for="gender">Gender:</label> 
+				<input type="radio" id="gender" name="gender" value="Male" required>Male 
+				<input type="radio" id="gender" name="gender" value="Female" required>Female <br>
+			<label for="age">Age:</label> 
+				<input type="number" min="1" max="120" id="age" name="age" value=18 required><br>				
+			<label for="dob">Date of birth:</label> 
+				<input type="date" id="dob" name="dob" required><br>	
+			<label for="colour">Favourite color:</label> 
+				<input type="color" id="colour" name="colour" required><br>					
+			<label for="country">Which country:</label> 
+				<select name="country" required>
+					<option value="No_Selection"></option>
+	  				<option value="India">India</option>
+	  				<option value="US">United States</option>
+	  				<option value="UK">United Kingdom</option>
+	  				<option value="France">France</option>
+	  				<option value="Switzerland">Switzerland</option>
+	  			</select>
+	</fieldset><br>
+	<fieldset>
+		<legend>Your Indicators</legend>
+			<label for="height">Height: </label>
+				Short <input type="range" min="0" max="100" step="5" value="60" name="height" id="height"> Tall<br>
+			<label for="salary">Salary: </label>
+				Poor <input type="range" min="0" max="100" step="5" value="70" name="salary" id="salary"> Rich<br>			
+	</fieldset> <br>
+	<fieldset>
+		<legend>Your Contact Information</legend>
+			<label for="email">Email: </label>
+				<input type="email" name="email" id="email" required> <br>
+			<label for="mobile">Mobile: </label>
+				<input type="tel" name="mobile" id="mobile" required> <br>		
+			<label for="address">Address: </label>
+				<textarea rows="3" cols="60" name="address" id="address" required></textarea> <br>
+			<label for="contact_via"> Method to contact you: </label>		
+				<input type="checkbox" id="contact_via" name="contact_via" value="email" >Email
+				<input type="checkbox" id="contact_via" name="contact_via" value="whatsapp" >WhatsApp
+				<input type="checkbox" id="contact_via" name="contact_via" value="inapp" >In-App Chat <br>				
+	</fieldset> <br>
+	<input type="submit" value="Submit">
+</form>
+	<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+</body>
+</html>

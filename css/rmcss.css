@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+h1 { color:green }
+p { color:blue }
+
+#aa2 {color:red}
+
+.def {color:black; background:white}
+.zappy {color:yellow; background:lightgray}
+.wow {color:orange; background:gray}
+
+h2:hover {color: red}
+
+table, td, th {border:1px solid black; padding:10px}
+td {color:blue}
+
+.divid {color:red; background:black}
+#dividid {color:yellow; background:white}

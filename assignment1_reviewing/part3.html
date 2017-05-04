@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        
+        <title>The Bestest Dating Website Ever</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <meta name="author" content="David Liprini">
+        
+        <style>
+        
+            body{
+                font-family: Raleway, sans-serif;
+            }
+            
+            button, input, select, textarea{
+                font-family: inherit;
+                font-size: 100%;
+                color: #5a5a5a;
+            }
+            
+            fieldset {
+                background-color:lightyellow;
+                border: 10px solid yellow;
+                margin-bottom: 10px;
+                width:720px;
+            }
+            
+            legend {
+                font-weight: 600;
+            }
+            
+            label {
+                width:180px;
+                display:inline-block;
+                text-align: right;
+                vertical-align: top;
+                font-weight: 400;
+                
+            }
+            
+            input[type=radio] + label {
+                width:auto;
+            }
+            
+            input[type=checkbox] + label {
+                width:auto;
+            }
+            
+            textarea {
+                width:360px;
+                height:50px;
+            }
+            
+            .rangemin, .rangemax {
+                color:white;
+                display: inline-block;
+                text-align: center;
+                vertical-align: top;
+                width: 50px;
+                font-size: 85%;    
+            }
+            
+            .rangemin {
+                background-color:firebrick;
+            }
+            
+            .rangemax {
+                background-color:purple;
+            }
+            
+            label:hover, input:hover {
+                font-size: 125%;
+                transition: all 0.3s ease-out;
+            }
+            
+            #preview {
+                max-width:480px;
+                height:auto;
+                margin: 0 auto;
+            }
+        </style>
+        
+        <script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+        
+    </head>
+    
+    <body>
+
+        <header>
+        
+        <h1>Please Enter Your Details For Our Dating Website!</h1>
+        
+        </header>
+        
+        <section>
+        
+            <form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype=“multipart/form-data”>
+            
+                <fieldset>
+                
+                    <legend>Your Face</legend>
+                    
+                    <label for="profile">Your image:</label>
+                    <input type="file" name="profilephoto" required> <br/>
+                    
+                    <label for="profilepreview">Image preview:</label>
+                    <img id="preview"> <br/>
+                    
+                </fieldset>
+                
+                <fieldset>
+                
+                    <legend>Your General Details</legend>
+                    
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" placeholder="Your name here" required> <br/>
+                    
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" value="male" required><label for="male">Male</label>
+                    <input type="radio" name="gender" value="female" required><label for="female">Female</label> <br/>
+                    
+                    <label for="age">Age:</label>
+                    <input type="number" name="age" placeholder="18" required> <br/>
+                    
+                    <label for="birthday">Date of birth:</label>
+                    <input type="date" name="birthday"> <br/>
+                    
+                    <label for="color">Favourite colour:</label>
+                    <input type="color" name="favcolor"> <br/>
+                    
+                    <label for="country">Country:</label>
+                    <select name="country">
+                    
+                        <option disable selected value></option>
+                        <option value="sa">South Africa</option>
+                        <option value="cur">Curaçao</option>
+                        <option value="kyr">Kyrgyzstan</option>
+                        <option value="mon">Monaco</option>
+                        <option value="tuv">Tuvalu</option>
+                        
+                    
+                    </select>
+                
+                </fieldset>
+                
+                <fieldset>
+                
+                <legend>Your Indicators</legend>
+                    
+                    <label for="height">Height:</label>
+                    <label for="short" class="rangemin">Short</label><input type="range" name="height" min="0" max="100" step="10" value="50"><label for="tall" class="rangemax">Tall</label> <br />
+                    <label for="income">Salary:</label>
+                    <label for="poor" class="rangemin">Poor</label><input type="range" name="income" min="0" max="100" step="10" value="50"><label for="rich" class="rangemax">Rich</label> <br />
+                    
+                </fieldset>
+                
+                <fieldset>
+                
+                    <legend>Your Contact Information</legend>
+                
+                    <label for="email">Email:</label>
+                    <input type="email" name="email"> <br/>
+                    
+                    <label for="mobile">Mobile:</label>
+                    <input type="tel" name="mobile"> <br/>
+                    
+                    <label for="address">Address:</label>
+                    <textarea name="address" rows="4" cols="50"></textarea> <br/>
+                    
+                    <label for="contactmethod">Method contact you:</label>
+                    <input type="checkbox" name="contactmethod" value="Email"><label for="email">Email</label>
+                    <input type="checkbox" name="contactmethod" value="whatsapp"><label for="whatsapp">WhatsApp</label>
+                    <input type="checkbox" name="contactmethod" value="inapp"><label for="inapp">In-app chat</label>
+                    
+                </fieldset>
+            
+                <input type="submit" value="Submit">
+    
+            </form>
+        
+        </section>
+
+    </body>
+
+</html>

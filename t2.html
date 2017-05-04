@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>RupalJS Test</title>
+<script>
+	function surprise() {
+		alert("Hi!");
+		var ret= confirm("What say?");
+		alert("Got: " + ret);
+	}
+	function name() {
+		var name= prompt("Your name?");
+		document.write("Welcome " + name + "!");
+		console.log(document);
+	}
+	function bodyLoaded() {
+		alert("Body Loaded!");
+	}
+</script>
+</head>
+<body onLoad=bodyLoaded()>
+		<p>The Body has been loaded!
+JS testing:
+	<script>
+		surprise();
+		name();
+	</script>
+</body>
+</html>
