@@ -26,46 +26,31 @@
                 	break;
                 }
                 guesses += 1;   
-                finished = check_guess_basic();
+                finished = check_guess();
             }
-        }
-
-        function check_guess_basic() {
-        	if (guessed_color == target) {
-        
-            	
-                document.write("<p>You got it! The color was " + target + 
-                        ".\n\nIt took you " + guesses + 
-                        " guesses to get the color!");
-            	myBody=document.getElementsByTagName("body")[0];
-            	myBody.style.background=target;
-                  return true;   
-        	}
-        	
-            return false;
         }
         
         function check_guess() {
-            if (isNaN(guess_input)) {
-                alert("You have not entered a number.\n\n" +
-                      "Please enter a number in the range 1 to 100.");
+        	var indx= colors.indexOf(guessed_color);
+        	if (indx == -1) {
+				alert("‘I don’t recognize that color!");
+                return false;
+			}
+            if (guessed_color > target) {
+                alert("Your input is alphabetically higher than mine!");
                 return false;
             }
-            if ((guess_input < 1) || (guess_input > 100)) {
-                alert("Please enter an integer number in the range 1 to 100.");
+            if (guessed_color < target) {
+                alert("Your input is alphabetically lower than mine!");
                 return false;
             }
-            if (guess_input > target) {
-                alert("Your number is too large!");
-                return false;
-            }
-            if (guess_input < target) {
-                alert("Your number is too small!");
-                return false;
-            }
-            alert("You got it! The number was " + target + 
-                  ".\n\nIt took you " + guesses + 
-                  " guesses to get the number!");
+ 
+            document.write("<p>You got it! The color was " + target + 
+                        ".\n\nIt took you " + guesses + 
+                        " guesses to get the color!");
+            myBody=document.getElementsByTagName("body")[0];
+            myBody.style.background=target;
+ 
             return true;   
         }   
      </script>
