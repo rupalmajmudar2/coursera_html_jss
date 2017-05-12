@@ -40,9 +40,8 @@
 				//var div_ht= theLeftSide.clientHeight;
 				//var img_ht= img.height;
 				//alert('Hts are ' + div_ht + ' and ' + img_ht);
-		            
-				//img.style.top= 100+(10*index) + "px";
-				//img.style.left= 100+(10*index) + "px";
+				//Img ht is 0 at this point. Needs to be done in #img.onload as below.
+				
 				theLeftSide.appendChild(img);
 			}
 			<!-- http://stackoverflow.com/questions/1297449/change-image-size-with-javascript -->
@@ -50,16 +49,27 @@
 				<!--	You have to make sure the javascript is executed after the page is finished loading. -->
 				<!--		You can either do this by putting it in an onload event, or putting the script at the bottom of your page,--> 
 				<!--	just before the closing body tag. -->
+			<!-- All this done to dynamically get the heights of div and img and position them, instead of hard-coding 500 and 100! -->
 			img.onload = function() {
-				alert("PNG size is " + this.width + 'x' + this.height);
+				//alert("PNG size is " + this.width + 'x' + this.height);
 				for (var index=0; index < numberOfFaces; index++) {
 					var div_ht= theLeftSide.clientHeight;
+					var div_wd= theLeftSide.clientWidth;
 					img_id= 'img_left_' + (index+1);
 					img= document.getElementById(img_id);
-					img_ht= img.height;
-					alert('Hts are ' + div_ht + ' and ' + img_ht);
-					img.style.top= 100+(10*index) + "px";
-					img.style.left= 100+(10*index) + "px";
+					var img_ht= img.height;
+					var img_wd= img.width;
+					var v_dist= div_ht - img_ht;
+					var h_dist= div_wd - img_wd;
+					//alert('Hts are ' + div_ht + ' and ' + img_ht + " : Diff= " + dist);
+					
+					var random_pos_ht = Math.random() * v_dist;
+			        var random_pos_integer_ht = Math.floor(random_pos_ht);
+					img.style.top= random_pos_integer_ht + "px"; //100+(10*index) + "px";
+					
+					var random_pos_wd = Math.random() * h_dist;
+			        var random_pos_integer_wd = Math.floor(random_pos_wd);
+					img.style.left= random_pos_integer_wd + "px"; //100+(10*index) + "px";
 				}
 			}
 		}
