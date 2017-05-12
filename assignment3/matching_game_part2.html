@@ -19,6 +19,7 @@
 		}
 </style>
 </head>
+
 <body onload="generateFaces()">
 	<h1>Matching Game</h1>
 	<h2>Click on the extra smiling face on the left</h2>
@@ -29,15 +30,37 @@
 		var theLeftSide= document.getElementById("leftSide");
 		
 		function generateFaces() {
+			var img;
 			for (var index=0; index < numberOfFaces; index++) {
-				var img= document.createElement("img");
+				img= document.createElement("img");
+				img.id= 'img_left_' + (index+1);
+				//img.setAttribute("id", ("img_left_" + (index+1)) ); -> Works too
 				img.src= "smile.png";
+				
+				//var div_ht= theLeftSide.clientHeight;
+				//var img_ht= img.height;
+				//alert('Hts are ' + div_ht + ' and ' + img_ht);
+		            
+				//img.style.top= 100+(10*index) + "px";
+				//img.style.left= 100+(10*index) + "px";
 				theLeftSide.appendChild(img);
-				//var imgSize= img.clientWidth;
-				//alert(imgSize);
-						img.onload = function() {
-			  alert(this.width + 'x' + this.height);
 			}
+			<!-- http://stackoverflow.com/questions/1297449/change-image-size-with-javascript -->
+				<!--	 yourImg.style.height = '100px';-->
+				<!--	You have to make sure the javascript is executed after the page is finished loading. -->
+				<!--		You can either do this by putting it in an onload event, or putting the script at the bottom of your page,--> 
+				<!--	just before the closing body tag. -->
+			img.onload = function() {
+				alert("PNG size is " + this.width + 'x' + this.height);
+				for (var index=0; index < numberOfFaces; index++) {
+					var div_ht= theLeftSide.clientHeight;
+					img_id= 'img_left_' + (index+1);
+					img= document.getElementById(img_id);
+					img_ht= img.height;
+					alert('Hts are ' + div_ht + ' and ' + img_ht);
+					img.style.top= 100+(10*index) + "px";
+					img.style.left= 100+(10*index) + "px";
+				}
 			}
 		}
 	</script>
