@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="author" content="Rupal Majmudar">
+<title>Matching Game Website</title>
+<style>
+	img {
+			position:absolute
+		}
+	div {
+			position:absolute;
+			width:500px; 
+			height:500px
+		}
+	.div_rightSide { 
+			left: 500px; 
+            border-left: 1px solid black 
+		}
+</style>
+</head>
+
+<body onload="generateFaces()">
+	<h1>Matching Game</h1>
+	<h2>Click on the extra smiling face on the left</h2>
+	<div id="leftSide"></div>
+	<div class="div_rightSide" id="rightSide"></div>
+	<script>
+		var numberOfFaces= 5;
+		var theLeftSide= document.getElementById("leftSide");
+		var theRightSide= document.getElementById("rightSide");
+		
+		function generateFaces() {
+			var img;
+			for (var index=0; index < numberOfFaces; index++) {
+				img= document.createElement("img");
+				img.id= 'img_left_' + (index+1);
+				//img.setAttribute("id", ("img_left_" + (index+1)) ); -> Works too
+				img.src= "smile.png";
+				
+				//var div_ht= theLeftSide.clientHeight;
+				//var img_ht= img.height;
+				//alert('Hts are ' + div_ht + ' and ' + img_ht);
+				//Img ht is 0 at this point. Needs to be done in #img.onload as below.
+				
+				theLeftSide.appendChild(img);
+			}
+			
+			<!-- Courtesy: http://stackoverflow.com/questions/1297449/change-image-size-with-javascript -->
+				<!--	 yourImg.style.height = '100px';-->
+				<!--	You have to make sure the javascript is executed after the page is finished loading. -->
+				<!--		You can either do this by putting it in an onload event, or putting the script at the bottom of your page,--> 
+				<!--	just before the closing body tag. -->
+			<!-- All this done to dynamically get the heights of div and img and position them, instead of hard-coding 500 and 100! -->
+			img.onload = function() {
+				//alert("PNG size is " + this.width + 'x' + this.height);
+				for (var index=0; index < numberOfFaces; index++) {
+					var div_ht= theLeftSide.clientHeight;
+					var div_wd= theLeftSide.clientWidth;
+					img_id= 'img_left_' + (index+1);
+					img= document.getElementById(img_id);
+					var img_ht= img.height;
+					var img_wd= img.width;
+					var v_dist= div_ht - img_ht;
+					var h_dist= div_wd - img_wd;
+					//alert('Hts are ' + div_ht + ' and ' + img_ht + " : Diff= " + dist);
+					
+					var random_pos_ht = Math.random() * v_dist;
+			        var random_pos_integer_ht = Math.floor(random_pos_ht);
+					img.style.top= random_pos_integer_ht + "px"; //100+(10*index) + "px";
+					
+					var random_pos_wd = Math.random() * h_dist;
+			        var random_pos_integer_wd = Math.floor(random_pos_wd);
+					img.style.left= random_pos_integer_wd + "px"; //100+(10*index) + "px";
+				}
+				
+				//Since the correct positioning of the left-side images only happens onload,
+				//the cloning etc. has to happen thereafter, as below:
+				var leftSideImages = theLeftSide.cloneNode(true);
+				var lastImg= leftSideImages.lastChild;
+				leftSideImages.removeChild(lastImg);
+				theRightSide.appendChild(leftSideImages);
+			}
+		}
+	</script>
+</body>
+</html>
